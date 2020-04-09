@@ -8,7 +8,8 @@ all:
 
 install:    all
 	mkdir -p $(DESTDIR)$(bindir)
-	mkdir -p $(DESTDIR)$(datarootdir)/pacman
+	cp pacman $(DESTDIR)$(bindir)
+	cp pacmanedit $(DESTDIR)$(bindir)
 	cp -fR Levels/ $(DESTDIR)$(datarootdir)/pacman/
 	-chown root:games $(DESTDIR)$(bindir)/pacman
 	-chown root:games $(DESTDIR)$(datarootdir)/pacman -R
@@ -25,6 +26,6 @@ uninstall:
 	if [ -e $(DESTDIR)$(datarootdir)/pacman/Levels/ ] ; then rmdir $(DESTDIR)$(datarootdir)/pacman/Levels/ ; fi
 	if [ -e $(DESTDIR)$(datarootdir)/pacman/ ] ; then rmdir $(DESTDIR)$(datarootdir)/pacman/ ; fi
 
-clean:	uninstall
+clean:
 	rm -f pacman
 	rm -f pacmanedit
